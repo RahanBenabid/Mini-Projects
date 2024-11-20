@@ -1,0 +1,67 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env*
+
+# Build output
+dist/
+build/
+out/
+
+# Temporary files
+tmp/
+temp/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# OS generated files
+Thumbs.db
+Icon?
+Desktop.ini
+
+# Miscellaneous files
+coverage/
+*.{tgz,zip,tar,gz}
+
+# Test files
+*.{test,spec}.js
+tasks.json
+*.paw
+
+# Python-specific
+*.py[cod]
+*.so
+__pycache__/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+{venv,env,.venv,.env}/
+
+# Development environments
+.ipynb_checkpoints
+.pytest_cache/
+.mypy_cache/
+.pylint.d/
+.pyre/
+
+# Build artifacts
+htmlcov/
+.coverage*
+coverage.xml
+nosetests.xml
+
+local_modules/
+**/images/*
