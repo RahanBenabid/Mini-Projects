@@ -8,8 +8,16 @@ class BookSpider(scrapy.Spider):
     name = "book"
     allowed_domains = ["books.toscrape.com"]
     start_urls = ["https://books.toscrape.com/"]
+    
+    
 
     def parse(self, response):
+        """
+        @url https://books.toscrape.com
+        @returns items 20 20
+        @returns request 1 50
+        @scrapes url title price
+        """
         for book in response.css("article.product_pod"):
             item = BooksItem()
             # we are using relative paths in case the website changes
