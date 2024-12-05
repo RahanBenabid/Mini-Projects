@@ -65,3 +65,7 @@ nosetests.xml
 
 local_modules/
 **/images/*
+
+*.jpg
+*.pnj
+*.png
