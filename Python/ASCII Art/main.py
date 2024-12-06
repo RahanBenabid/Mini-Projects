@@ -4,7 +4,7 @@ from PIL import Image
 import math
 import os
 
-imageURL = './../../../../../Downloads/images/--raycast/pexels-emmali-6589610.jpg'
+imageURL = './image.jpg'
 # from thinnest to boldest
 ASCII = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 RATIO = (len(ASCII) - 1) /255
@@ -24,7 +24,7 @@ def luminosity():
 def resize_image(img, terminal_width):
     aspect_ratio = img.height / img.width
     new_width = terminal_width
-    new_height = int(new_width * aspect_ratio * 0.4)
+    new_height = int(new_width * aspect_ratio * 0.55)
     return img.resize((new_width, new_height))
 
 try:
