@@ -100,15 +100,16 @@ def next_state(grid: list[list[int]]) -> list[list[int]]:
 	return new_grid
 
 if __name__ == '__main__':
-	grid = random_state(55, 10)
-	pretty_print(grid)
-	time.sleep(1)
-	os.system('clear')
 	
-	while True:
-		grid = next_state(grid)
-		pretty_print(grid)
-		time.sleep(1)
-		os.system('clear')
+	try:
+			grid = random_state(80, 20)
+			while True:
+				pretty_print(grid)
+				time.sleep(1)
+				os.system('clear')
+				grid = next_state(grid)
+	except KeyboardInterrupt:
+		print("\nExiting program...")
 		
-	
+		
+# should add curse support later https://docs.python.org/3/howto/curses.html
