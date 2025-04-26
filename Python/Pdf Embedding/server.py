@@ -26,7 +26,7 @@ def uploadPdf():
     # save the uploaded file to a directory
     host.save(os.path.join("/Users/RahanBen/Downloads/test/pythonPdf/", filename))
     
-    # print the other Pdfs that should be inside:
+    # print the other Pdfs that should be inside:;
     pdf_files = request.files.getlist('pdfs')
     if not pdf_files:
       return 'No pdf to embed into the host were sent', 400
