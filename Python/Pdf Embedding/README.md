@@ -18,3 +18,10 @@
 1. For receiving PDFs: Instead of getting files from request.files, get binary data from `request.data` or use a JSON payload with base64-encoded PDFs
 2. For processing PDFs: Use `pikepdf.Pdf.open(bytes_io)` where `bytes_io` is a `BytesIO` object containing the PDF data, not a file path
 3. For returning PDFs: Instead of saving to disk, create a BytesIO object, save the PDF to that, and return it directly in the response
+
+
+Instead of doing this:
+- Upload PDF ➔ Save it to disk ➔ Open it again ➔ Process
+
+I should do:
+- Upload PDF ➔ Keep it in memory (as bytes or an in-memory file object like BytesIO) ➔ Process directly
