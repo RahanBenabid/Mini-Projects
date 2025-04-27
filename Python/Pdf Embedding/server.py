@@ -10,12 +10,6 @@ from pdfHandler import getBytesFromPDF, embedPdf, extractPdf
 
 app = Flask(__name__)
 
-@app.route("/")
-def servePdf():
-  myBytes = getBytesFromPDF()
-  return myBytes
-
-
 @app.route("/create_embedded_pdf", methods=['POST'])
 def embed_pdf():
   if request.method != 'POST':
@@ -26,7 +20,6 @@ def embed_pdf():
   host = request.files['host']
   filename = secure_filename(host.filename)
   
-  # print the other Pdfs that should be inside:
   pdf_files = request.files.getlist('pdfs')
   if not pdf_files:
     return 'No pdf to embed into the host were sent', 400

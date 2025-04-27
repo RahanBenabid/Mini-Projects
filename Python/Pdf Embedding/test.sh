@@ -11,5 +11,3 @@ echo $PWD
   
 curl -X POST http://127.0.0.1:5000/extract_embedded_pdf --output "./myPdfs.zip" \
   -F 'pdf=@/Users/RahanBen/Desktop/test/result.pdf'
-  
-# curl -F 'files[]=@/path/to/fileX' -F 'files[]=@/path/to/fileY' ... http://localhost/upload

@@ -15,13 +15,11 @@ def getBytesFromPDF():
 def embedPdf(host, pdf_list):
   #	print(host, pdf_list[0])
   host_pdf = Pdf.open(host)
-  #	filespec = AttachedFileSpec.from_filepath(host_pdf, pdf_list[0])
   
   for (idx, pdf_file) in enumerate(pdf_list):
     file_bytes = pdf_list[idx].read()
     host_pdf.attachments[pdf_file.filename] = file_bytes
     
-    # save the embdded Pdf into a byteio object
   output = io.BytesIO()
   host_pdf.save(output)
   output.seek(0)
@@ -45,8 +43,5 @@ def extractPdf(pdf):
   zip_buffer.seek(0)
   
   return zip_buffer
-
-#with open("test.pdf", "rb") as testPDF:
-# encodedPDFString = base64.b64decode(testPDF.read())
 
 # link https://pikepdf.readthedocs.io/en/latest/topics/attachments.html
