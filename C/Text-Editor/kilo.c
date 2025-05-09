@@ -12,6 +12,8 @@
 
 /*** defines ***/
 
+#define KILO_VERSION "0.0.1"
+
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 /*** data ***/
@@ -19,6 +21,8 @@
 struct termios orig_termios;
 
 struct editorConfig {
+  // coordinates of the cursor
+  int cx, cy;
   int screenrows;
   int screencols;
   struct termios orig_termios;
@@ -235,8 +239,26 @@ void abFree(struct abuf *ab) { free(ab->b); }
 void editorDrawRows(struct abuf *ab) {
   // draw the edges using the E struct for something dynamic
   for (int y = 0; y < E.screenrows; y++) {
-    abAppend(ab, "~", 1);
+    if (y == E.screenrows / 3) {
+      char welcome[80];
+      
+      // snprintf is better for formatting buffers for later use
+      int welcomelen = snprintf(welcome, sizeof(welcome),
+                                "Kilo editor -- version %s", KILO_VERSION);
+      if (welcomelen > E.screencols) welcomelen = E.screencols;
+      int padding = (E.screencols - welcomelen) / 2;
+      if (padding) {
+        abAppend(ab, "~", 1);
+        padding--;
+      }
+      while (padding--) abAppend(ab, " ", 1);
+      abAppend(ab, welcome, welcomelen);
+    } else {
+      abAppend(ab, "~", 1);
+    }
 
+    // clear each line
+    abAppend(ab, "\x1b[K", 3);
     if (y < E.screenrows - 1) {
       abAppend(ab, "\r\n", 2);
     }
@@ -251,19 +273,51 @@ void editorRefreshScreen(void) {
    */
 
   struct abuf ab = ABUF_INIT;
-  abAppend(&ab, "\x1b[2J", 4);
+
+  /*
+   * there could be a possible flicker effect when trying to draw the scene, the
+   * cursor might appear in the middle of the screen for a split second while
+   * the terminal is drawing to the screen so we hide the cursor before
+   * refereshing the screen then display it again
+   * the `h` and `l` commands are for set and reset mode
+   */
+  abAppend(&ab, "\x1b[?25l", 6);
   // put the cursor back at the top of the screen
   abAppend(&ab, "\x1b[H", 3);
 
   editorDrawRows(&ab);
+  
+  // move the cursor to the stored position
+  char buf[32];
+  snprintf(buf, sizeof(buf), "\x1b[%d;%dH", E.cy + 1, E.cx + 1);
+  abAppend(&ab, buf, strlen(buf));
 
-  abAppend(&ab, "\x1b[H", 3);
+  // re-diplay the cursor
+  abAppend(&ab, "\x1b[?25h", 6);
 
+  // write the buffer's contents our to standard output & free memory
   write(STDOUT_FILENO, ab.b, ab.len);
   abFree(&ab);
 }
 
 /*** input ***/
+
+void editorMoveCursor(char key) {
+  switch (key) {
+    case 'a':
+      E.cx--;
+      break;
+    case 'd':
+      E.cx++;
+      break;
+    case 'w':
+      E.cy--;
+      break;
+    case 's':
+      E.cy++;
+      break;
+  }
+}
 
 /*
  * waits for a keypress then processes it later...
@@ -280,6 +334,13 @@ void editorProcessKeypress(void) {
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
+    
+    case 'w':
+    case 's':
+    case 'a':
+    case 'd':
+      editorMoveCursor(c);
+      break;
   }
 }
 
@@ -289,6 +350,8 @@ void editorProcessKeypress(void) {
  * initialize all the fields in the E struct
  */
 void initEditor(void) {
+  E.cx = 0;
+  E.cy = 0;
   if (getWindowSize(&E.screenrows, &E.screencols) == -1)
     die("getWindowSize");
 }

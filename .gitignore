@@ -69,8 +69,10 @@ local_modules/
 *.jpg
 *.pnj
 *.png
+*.pdf
 
 venv/
+ignore/
 C++/space-shooter
 *.zip
 
