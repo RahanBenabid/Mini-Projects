@@ -85,3 +85,4 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 C/Text-Editor/kilo
+Swift/Langtons-ant/.build

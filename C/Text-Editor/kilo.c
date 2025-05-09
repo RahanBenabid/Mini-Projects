@@ -16,6 +16,26 @@
 
 #define CTRL_KEY(k) ((k) & 0x1f)
 
+/*
+ * we set a representation for arrow keys that doesn't conflict with other kays
+ * like wasd, we give them a large `int` value, which will be out of range of a
+ * `char` representation
+ *
+ * by setting the first const to 1000, the others will get incremented values of
+ * 1001 -> 1003
+ */
+enum editorKey {
+  ARROW_LEFT = 1000,
+  ARROW_RIGHT,
+  ARROW_UP,
+  ARROW_DOWN,
+  DEL_KEY,
+  HOME_KEY,
+  END_KEY,
+  PAGE_UP,
+  PAGE_DOWN
+};
+
 /*** data ***/
 
 struct termios orig_termios;
@@ -126,14 +146,71 @@ void enableRawMode(void) {
 /*
  * wait for one keypress then return it later
  */
-char editorReadKey(void) {
+int editorReadKey(void) {
   int nread;
   char c;
   while ((nread = read(STDIN_FILENO, &c, 1)) != 1) {
     if (nread == -1 && errno != EAGAIN)
       die("read");
   }
-  return c;
+  if (c == '\x1b') {
+    char seq[3];
+    if (read(STDIN_FILENO, &seq[0], 1) != 1)
+      return '\x1b';
+    if (read(STDIN_FILENO, &seq[1], 1) != 1)
+      return '\x1b';
+
+    if (seq[0] == '[') {
+      if (seq[1] >= '0' && seq[1] <= '9') {
+        if (read(STDIN_FILENO, &seq[2], 1) != 1)
+          return '\x1b';
+        if (seq[2] == '~') {
+          switch (seq[1]) {
+          case '1':
+            return HOME_KEY;
+          case '3':
+            return DEL_KEY;
+          case '4':
+            return END_KEY;
+          case '5':
+            return PAGE_UP;
+          case '6':
+            return PAGE_DOWN;
+          case '7':
+            return HOME_KEY;
+          case '8':
+            return END_KEY;
+          }
+        }
+      } else {
+        switch (seq[1]) {
+        case 'A':
+          return ARROW_UP;
+        case 'B':
+          return ARROW_DOWN;
+        case 'C':
+          return ARROW_RIGHT;
+        case 'D':
+          return ARROW_LEFT;
+        case 'H':
+          return HOME_KEY;
+        case 'F':
+          return END_KEY;
+        }
+      }
+    } else if (seq[0] == 'O') {
+      switch (seq[1]) {
+      case 'H':
+        return HOME_KEY;
+      case 'F':
+        return END_KEY;
+      }
+    }
+
+    return '\x1b';
+  } else {
+    return c;
+  }
 }
 
 int getCursorPosition(int *rows, int *cols) {
@@ -241,17 +318,19 @@ void editorDrawRows(struct abuf *ab) {
   for (int y = 0; y < E.screenrows; y++) {
     if (y == E.screenrows / 3) {
       char welcome[80];
-      
+
       // snprintf is better for formatting buffers for later use
       int welcomelen = snprintf(welcome, sizeof(welcome),
                                 "Kilo editor -- version %s", KILO_VERSION);
-      if (welcomelen > E.screencols) welcomelen = E.screencols;
+      if (welcomelen > E.screencols)
+        welcomelen = E.screencols;
       int padding = (E.screencols - welcomelen) / 2;
       if (padding) {
         abAppend(ab, "~", 1);
         padding--;
       }
-      while (padding--) abAppend(ab, " ", 1);
+      while (padding--)
+        abAppend(ab, " ", 1);
       abAppend(ab, welcome, welcomelen);
     } else {
       abAppend(ab, "~", 1);
@@ -286,7 +365,7 @@ void editorRefreshScreen(void) {
   abAppend(&ab, "\x1b[H", 3);
 
   editorDrawRows(&ab);
-  
+
   // move the cursor to the stored position
   char buf[32];
   snprintf(buf, sizeof(buf), "\x1b[%d;%dH", E.cy + 1, E.cx + 1);
@@ -302,20 +381,28 @@ void editorRefreshScreen(void) {
 
 /*** input ***/
 
-void editorMoveCursor(char key) {
+void editorMoveCursor(int key) {
   switch (key) {
-    case 'a':
+  case ARROW_LEFT:
+    if (E.cx != 0) {
       E.cx--;
-      break;
-    case 'd':
+    }
+    break;
+  case ARROW_RIGHT:
+    if (E.cx != E.screencols - 1) {
       E.cx++;
-      break;
-    case 'w':
+    }
+    break;
+  case ARROW_UP:
+    if (E.cy != 0) {
       E.cy--;
-      break;
-    case 's':
+    }
+    break;
+  case ARROW_DOWN:
+    if (E.cy != E.screenrows - 1) {
       E.cy++;
-      break;
+    }
+    break;
   }
 }
 
@@ -326,7 +413,7 @@ void editorMoveCursor(char key) {
  * functions
  */
 void editorProcessKeypress(void) {
-  char c = editorReadKey();
+  int c = editorReadKey();
 
   switch (c) {
   case CTRL_KEY('q'):
@@ -334,13 +421,28 @@ void editorProcessKeypress(void) {
     write(STDOUT_FILENO, "\x1b[H", 3);
     exit(0);
     break;
-    
-    case 'w':
-    case 's':
-    case 'a':
-    case 'd':
-      editorMoveCursor(c);
-      break;
+
+  case HOME_KEY:
+    E.cx = 0;
+    break;
+
+  case END_KEY:
+    E.cx = E.screencols - 1;
+    break;
+
+  case PAGE_UP:
+  case PAGE_DOWN: {
+    int times = E.screenrows;
+    while (times--)
+      editorMoveCursor(c == PAGE_UP ? ARROW_UP : ARROW_DOWN);
+  }
+
+  case ARROW_UP:
+  case ARROW_DOWN:
+  case ARROW_LEFT:
+  case ARROW_RIGHT:
+    editorMoveCursor(c);
+    break;
   }
 }
 
