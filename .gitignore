@@ -86,3 +86,7 @@ DerivedData/
 .netrc
 C/Text-Editor/kilo
 Swift/Langtons-ant/.build
+test/
+C/Text-Editor/content.txt
+**/.nova
+C/Text-Editor/.clangd

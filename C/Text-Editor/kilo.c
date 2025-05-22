@@ -1,10 +1,17 @@
 /*** includes ***/
 
+#define _DEFAULT_SOURCE
+#define _BSD_SOURCE
+#define _GNU_SOURCE
+
+#include <_stdio.h>
 #include <ctype.h>
 #include <errno.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/_types/_ssize_t.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <termios.h>
@@ -17,7 +24,7 @@
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 /*
- * we set a representation for arrow keys that doesn't conflict with other kays
+ * we set a representation for arrow keys that doesn't conflict with other keys
  * like wasd, we give them a large `int` value, which will be out of range of a
  * `char` representation
  *
@@ -38,6 +45,19 @@ enum editorKey {
 
 /*** data ***/
 
+/*
+ * datatype to store a row of text in the editor
+ * stands for editor row, stores a line of text to the dynamically allocated
+ *
+ * character data
+ * `typedef` helps us refer to the type sa erow and not struct erow, so cleaner
+ * code pretty much
+ */
+typedef struct erow {
+  int size;
+  char *chars;
+} erow;
+
 struct termios orig_termios;
 
 struct editorConfig {
@@ -45,6 +65,8 @@ struct editorConfig {
   int cx, cy;
   int screenrows;
   int screencols;
+  int numrows;
+  erow *row;
   struct termios orig_termios;
 };
 
@@ -239,7 +261,7 @@ int getCursorPosition(int *rows, int *cols) {
    * parse the two number using sscanf()
    * we make sure it responded with an escape sequence
    * we pass a pointer to the third character to skip '\x1b['
-   * then we parse to integers seperated by a `;` and put them into rows and
+   * then we parse to integers separated by a `;` and put them into rows and
    * cols
    */
   if (buf[0] != '\x1b' || buf[1] != '[')
@@ -254,9 +276,10 @@ int getWindowSize(int *rows, int *cols) {
   struct winsize ws;
 
   /*
-   * error return with the code -1  and also the values aren't 0 so it doesn't
-   * create an error  on success, we pass the values back by setting the int
-   * references that were passed to the function
+   * error return with the code -1
+   * check when values aren't 0 so it doesn't create an error on success, we
+   * pass the values back by setting the int references that were passed to the
+   * function
    */
   if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
     if (write(STDOUT_FILENO, "\x1b[999C\x1b[999B", 12) != 12)
@@ -269,12 +292,50 @@ int getWindowSize(int *rows, int *cols) {
   }
 }
 
+/*** row operations ***/
+
+void editorAppendRow(char *s, size_t len) {
+  E.row = realloc(E.row, sizeof(erow) * (E.numrows + 1));
+
+  int at = E.numrows;
+  E.row[at].size = len;
+  E.row[at].chars = malloc(len + 1);
+  memcpy(E.row[at].chars, s, len);
+  E.row[at].chars[len] = '\0';
+  E.numrows++;
+}
+
+/*** file i/o ***/
+
+/*
+ * this will be for opening and reading file from disk
+ */
+void editorOpen(char *filename) {
+  FILE *fp = fopen(filename, "r");
+  if (!fp)
+    die("fopen");
+
+  char *line = NULL;
+  size_t linecap = 0;
+  ssize_t linelen;
+  linelen = getline(&line, &linecap, fp);
+  while ((linelen = getline(&line, &linecap, fp)) != -1) {
+    while (linelen > 0 &&
+           (line[linelen - 1] == '\n' || line[linelen - 1] == '\r'))
+      linelen--;
+    editorAppendRow(line, linelen);
+  }
+
+  free(line);
+  fclose(fp);
+}
+
 /*** append buffer ***/
 
 /*
  * create a dynamic string that supports appending this consists of a pointer to
  * our buffer in memory and a lengthABUF_INIT represents an empty buffer, it
- * acts as a contructor
+ * acts as a constructor
  */
 struct abuf {
   char *b;
@@ -286,8 +347,8 @@ struct abuf {
 /*
  * we use realloc to make sure enough memory to available to hold the new string
  *
- * reaclloc will give us a block of mem the size of the current string plusthe
- * new string we are just appending
+ * realloc will give us a block of memory the size of the current string plus
+ * the new string we are just appending
  *
  * so it will either extend the current size of the block of memory or will take
  * care of freeing the current block and allocating a new one elsewhere that is
@@ -316,24 +377,31 @@ void abFree(struct abuf *ab) { free(ab->b); }
 void editorDrawRows(struct abuf *ab) {
   // draw the edges using the E struct for something dynamic
   for (int y = 0; y < E.screenrows; y++) {
-    if (y == E.screenrows / 3) {
-      char welcome[80];
+    if (y >= E.numrows) {
+      if (E.numrows == 0 && y == E.screenrows / 3) {
+        char welcome[80];
 
-      // snprintf is better for formatting buffers for later use
-      int welcomelen = snprintf(welcome, sizeof(welcome),
-                                "Kilo editor -- version %s", KILO_VERSION);
-      if (welcomelen > E.screencols)
-        welcomelen = E.screencols;
-      int padding = (E.screencols - welcomelen) / 2;
-      if (padding) {
+        // `snprintf` is better for formatting buffers for later use
+        int welcomelen = snprintf(welcome, sizeof(welcome),
+                                  "Kilo editor -- version %s", KILO_VERSION);
+        if (welcomelen > E.screencols)
+          welcomelen = E.screencols;
+        int padding = (E.screencols - welcomelen) / 2;
+        if (padding) {
+          abAppend(ab, "~", 1);
+          padding--;
+        }
+        while (padding--)
+          abAppend(ab, " ", 1);
+        abAppend(ab, welcome, welcomelen);
+      } else {
         abAppend(ab, "~", 1);
-        padding--;
       }
-      while (padding--)
-        abAppend(ab, " ", 1);
-      abAppend(ab, welcome, welcomelen);
     } else {
-      abAppend(ab, "~", 1);
+      int len = E.row[y].size;
+      if (len > E.screencols)
+        len = E.screencols;
+      abAppend(ab, E.row[y].chars, len);
     }
 
     // clear each line
@@ -454,13 +522,19 @@ void editorProcessKeypress(void) {
 void initEditor(void) {
   E.cx = 0;
   E.cy = 0;
+  E.numrows = 0;
+  E.row = NULL;
+
   if (getWindowSize(&E.screenrows, &E.screencols) == -1)
     die("getWindowSize");
 }
 
-int main(void) {
+int main(int argc, char *argv[]) {
   enableRawMode();
   initEditor();
+  if (argc >= 2) {
+    editorOpen(argv[1]);
+  }
 
   while (1) {
     editorRefreshScreen();
@@ -470,4 +544,4 @@ int main(void) {
   return 0;
 }
 
-// source https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html
+// source https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html
