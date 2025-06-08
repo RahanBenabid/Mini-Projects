@@ -1,0 +1,32 @@
+CompileFlags:
+  Add:
+    - "-I/opt/devkitpro/libnx/include"
+    - "-I/opt/devkitpro/portlibs/switch/include"
+    - "-I/opt/devkitpro/devkitA64/aarch64-none-elf/include"
+    - "-D__SWITCH__"
+    - "-march=armv8-a+crc+crypto"
+    - "-mtune=cortex-a57"
+    - "-mtp=soft"
+    - "-fPIE"
+    - "-ffunction-sections"
+  CompilationDatabase: /Users/RahanBen/Documents/-code/switch-jailbreak/application
+
+Index:
+  Background: Build
+  StandardLibrary: Yes
+
+Diagnostics:
+  UnusedIncludes: Strict
+  ClangTidy:
+    Add:
+      - modernize*
+      - performance*
+      - readability*
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+
+Hover:
+  ShowAKA: Yes

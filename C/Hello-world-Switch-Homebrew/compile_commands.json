@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/Users/RahanBen/Documents/-code/switch-jailbreak/application",
+    "command": "/opt/devkitpro/devkitA64/bin/aarch64-none-elf-gcc -I/opt/devkitpro/libnx/include -I/opt/devkitpro/portlibs/switch/include -I/opt/devkitpro/devkitA64/aarch64-none-elf/include -D__SWITCH__ -g -Wall -O2 -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE -ffunction-sections source/main.c -o source/main.o",
+    "file": "source/main.c"
+  }
+]
