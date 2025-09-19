@@ -1,0 +1,9 @@
+# .clangd file in project root
+
+# Add these compiler flags for Clangd
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -pedantic
+    - -std=c99
