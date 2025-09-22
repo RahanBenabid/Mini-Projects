@@ -1,15 +1,7 @@
+#include "matrice_transition.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-struct _trie {
-  int maxNode;      /* Nombre maximal de noeuds du trie int */
-  int nextNode;     /* Indice du prochain noeud disponible */
-  int **transition; /* matrice de transition */
-  char *finite;     /* etats terminaux */
-};
-
-typedef struct _trie *Trie;
 
 Trie createTrie(int maxNode) {
   Trie trie = malloc(sizeof(struct _trie));
@@ -37,30 +29,51 @@ Trie createTrie(int maxNode) {
     }
   }
 
+  for (int i = 0; i < maxNode; i++) {
+    trie->finite[i] = 0;
+  }
+
   return trie;
 }
 
 // later should add the destructor below
 
 void insertInTrie(Trie trie, unsigned char *w) {
-  if (strlen(w) >= trie->maxNode) {
-    perror("the word length is longer than the trie max number of nodes");
-    return;
-  }
   int currentNode = 0;
-  for (int i = 0; i < strlen(w); i++) {
+  size_t n = strlen((char*) w);
+  for (int i = 0; i < n; i++) {
     unsigned char currentCharacter = w[i];
     if (trie->transition[currentNode][currentCharacter] == -1) {
+      // during an insertion, we check if we're passing the limit
+      if (trie->nextNode >= trie->maxNode) {
+        perror("Trie is full, cannot insert more nodes");
+        return;
+      }
       trie->transition[currentNode][currentCharacter] = trie->nextNode;
       trie->nextNode++;
     }
     currentNode = trie->transition[currentNode][currentCharacter];
   }
+  // should be only true for terminal nodes, but i'm keeping it as is for now
   trie->finite[currentNode] = 1;
 }
 
-int isInTrie(Trie trie, unsigned char *w) {}
+int isInTrie(Trie trie, unsigned char *w) {
+  int currentNode = 0;
+  size_t n = strlen((char*) w);
+  for (int i = 0; i < n; i++) {
+    unsigned char currentCharacter = w[i];
+    if (trie->transition[currentNode][currentCharacter] != -1) {
+      currentNode = trie->transition[currentNode][currentCharacter];
+    } else {
+      return 0;
+    }
+  }
+  // might only return if it's terminal, not thinking about it for now
+  return 1;
+}
 
+// ignore this function for now
 void printing_the_trie(Trie trie, int maxNode) {
   for (int i = 0; i < maxNode; i++) {
     // go to a new line for the node i
@@ -73,7 +86,7 @@ void printing_the_trie(Trie trie, int maxNode) {
 }
 
 int main(int argc, char *argv[]) {
-  const int maxNode = 4;
+  const int maxNode = 5;
   Trie trie = createTrie(maxNode);
 
   char *word = "car";
@@ -82,9 +95,21 @@ int main(int argc, char *argv[]) {
   word = "cat";
   insertInTrie(trie, word);
 
-  printing_the_trie(trie, maxNode);
-  
-  printf("\nthe list of the terminal nodes: %s", trie->finite);
+  printf("\nterminal nodes: ");
+  for (int i = 0; i < maxNode; i++) {
+    if (trie->finite[i]) {
+      printf("%d ", i);
+    }
+  }
+  printf("\n");
+
+  int searchResult;
+
+  searchResult = isInTrie(trie, "car");
+  printf("searching %s: %d", "car", searchResult);
+
+  searchResult = isInTrie(trie, "yol");
+  printf("\nsearching %s: %d\n", "yol", searchResult);
 
   return 0;
 }
