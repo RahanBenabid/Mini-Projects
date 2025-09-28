@@ -3,85 +3,196 @@
 <plist version="1.0">
 <dict>
  <key>clang_version</key>
-<string>Apple clang version 17.0.0 (clang-1700.0.13.5)</string>
+<string>Apple clang version 17.0.0 (clang-1700.3.19.1)</string>
  <key>diagnostics</key>
  <array>
   <dict>
    <key>path</key>
    <array>
     <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>149</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>149</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>15</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>24</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>26</integer>
-      <key>col</key><integer>8</integer>
+      <key>line</key><integer>150</integer>
+      <key>col</key><integer>15</integer>
       <key>file</key><integer>0</integer>
      </dict>
      <key>ranges</key>
      <array>
        <array>
         <dict>
-         <key>line</key><integer>26</integer>
-         <key>col</key><integer>8</integer>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>15</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>26</integer>
-         <key>col</key><integer>12</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-       </array>
-       <array>
-        <dict>
-         <key>line</key><integer>26</integer>
-         <key>col</key><integer>16</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-        <dict>
-         <key>line</key><integer>26</integer>
-         <key>col</key><integer>40</integer>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>33</integer>
          <key>file</key><integer>0</integer>
         </dict>
        </array>
      </array>
      <key>depth</key><integer>0</integer>
      <key>extended_message</key>
-     <string>Value stored to &apos;ligne&apos; during its initialization is never read</string>
+     <string>Calling &apos;createTrie&apos;</string>
      <key>message</key>
-     <string>Value stored to &apos;ligne&apos; during its initialization is never read</string>
+     <string>Calling &apos;createTrie&apos;</string>
     </dict>
-   </array>
-   <key>description</key><string>Value stored to &apos;ligne&apos; during its initialization is never read</string>
-   <key>category</key><string>Unused code</string>
-   <key>type</key><string>Dead initialization</string>
-   <key>check_name</key><string>deadcode.DeadStores</string>
-   <!-- This hash is experimental and going to change! -->
-   <key>issue_hash_content_of_line_in_context</key><string>885af33e0e2efe8a6b182809cf623730</string>
-  <key>issue_context_kind</key><string>function</string>
-  <key>issue_context</key><string>createTrie</string>
-  <key>issue_hash_function_offset</key><string>2</string>
-  <key>location</key>
-  <dict>
-   <key>line</key><integer>26</integer>
-   <key>col</key><integer>8</integer>
-   <key>file</key><integer>0</integer>
-  </dict>
-  <key>ExecutedLines</key>
-  <dict>
-   <key>0</key>
-   <array>
-    <integer>26</integer>
-   </array>
-  </dict>
-  </dict>
-  <dict>
-   <key>path</key>
-   <array>
     <dict>
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>25</integer>
+      <key>line</key><integer>11</integer>
+      <key>col</key><integer>1</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Entered call from &apos;main&apos;</string>
+     <key>message</key>
+     <string>Entered call from &apos;main&apos;</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>11</integer>
+           <key>col</key><integer>1</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>11</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>19</integer>
       <key>col</key><integer>3</integer>
       <key>file</key><integer>0</integer>
      </dict>
@@ -89,22 +200,22 @@
      <array>
        <array>
         <dict>
-         <key>line</key><integer>25</integer>
+         <key>line</key><integer>19</integer>
          <key>col</key><integer>3</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>25</integer>
+         <key>line</key><integer>19</integer>
          <key>col</key><integer>11</integer>
          <key>file</key><integer>0</integer>
         </dict>
        </array>
      </array>
-     <key>depth</key><integer>0</integer>
+     <key>depth</key><integer>1</integer>
      <key>extended_message</key>
-     <string>&apos;trie&apos; declared without an initial value</string>
+     <string>&apos;trie&apos; initialized here</string>
      <key>message</key>
-     <string>&apos;trie&apos; declared without an initial value</string>
+     <string>&apos;trie&apos; initialized here</string>
     </dict>
     <dict>
      <key>kind</key><string>control</string>
@@ -114,12 +225,12 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>25</integer>
+           <key>line</key><integer>19</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>25</integer>
+           <key>line</key><integer>19</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -127,12 +238,143 @@
         <key>end</key>
          <array>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>20</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>20</integer>
+      <key>col</key><integer>7</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>20</integer>
+         <key>col</key><integer>7</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>20</integer>
+         <key>col</key><integer>18</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Assuming &apos;trie&apos; is equal to NULL</string>
+     <key>message</key>
+     <string>Assuming &apos;trie&apos; is equal to NULL</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>21</integer>
+           <key>col</key><integer>5</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>21</integer>
+           <key>col</key><integer>11</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>21</integer>
+           <key>col</key><integer>5</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>21</integer>
+           <key>col</key><integer>11</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>25</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>25</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -148,12 +390,12 @@
         <key>start</key>
          <array>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>25</integer>
            <key>col</key><integer>3</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>25</integer>
            <key>col</key><integer>6</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -161,12 +403,12 @@
         <key>end</key>
          <array>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>25</integer>
            <key>col</key><integer>17</integer>
            <key>file</key><integer>0</integer>
           </dict>
           <dict>
-           <key>line</key><integer>27</integer>
+           <key>line</key><integer>25</integer>
            <key>col</key><integer>17</integer>
            <key>file</key><integer>0</integer>
           </dict>
@@ -178,7 +420,7 @@
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>27</integer>
+      <key>line</key><integer>25</integer>
       <key>col</key><integer>17</integer>
       <key>file</key><integer>0</integer>
      </dict>
@@ -186,36 +428,36 @@
      <array>
        <array>
         <dict>
-         <key>line</key><integer>27</integer>
+         <key>line</key><integer>25</integer>
          <key>col</key><integer>3</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>27</integer>
+         <key>line</key><integer>25</integer>
          <key>col</key><integer>6</integer>
          <key>file</key><integer>0</integer>
         </dict>
        </array>
      </array>
-     <key>depth</key><integer>0</integer>
+     <key>depth</key><integer>1</integer>
      <key>extended_message</key>
-     <string>Access to field &apos;maxNode&apos; results in a dereference of an undefined pointer value (loaded from variable &apos;trie&apos;)</string>
+     <string>Access to field &apos;maxNode&apos; results in a dereference of a null pointer (loaded from variable &apos;trie&apos;)</string>
      <key>message</key>
-     <string>Access to field &apos;maxNode&apos; results in a dereference of an undefined pointer value (loaded from variable &apos;trie&apos;)</string>
+     <string>Access to field &apos;maxNode&apos; results in a dereference of a null pointer (loaded from variable &apos;trie&apos;)</string>
     </dict>
    </array>
-   <key>description</key><string>Access to field &apos;maxNode&apos; results in a dereference of an undefined pointer value (loaded from variable &apos;trie&apos;)</string>
+   <key>description</key><string>Access to field &apos;maxNode&apos; results in a dereference of a null pointer (loaded from variable &apos;trie&apos;)</string>
    <key>category</key><string>Logic error</string>
-   <key>type</key><string>Dereference of undefined pointer value</string>
+   <key>type</key><string>Dereference of null pointer</string>
    <key>check_name</key><string>core.NullDereference</string>
    <!-- This hash is experimental and going to change! -->
-   <key>issue_hash_content_of_line_in_context</key><string>8861c7d903703dbaaa70c7de2e06db4e</string>
+   <key>issue_hash_content_of_line_in_context</key><string>a74bed436d517638c081c9ef95e38c8b</string>
   <key>issue_context_kind</key><string>function</string>
   <key>issue_context</key><string>createTrie</string>
-  <key>issue_hash_function_offset</key><string>3</string>
+  <key>issue_hash_function_offset</key><string>14</string>
   <key>location</key>
   <dict>
-   <key>line</key><integer>27</integer>
+   <key>line</key><integer>25</integer>
    <key>col</key><integer>17</integer>
    <key>file</key><integer>0</integer>
   </dict>
@@ -223,10 +465,16 @@
   <dict>
    <key>0</key>
    <array>
-    <integer>24</integer>
+    <integer>11</integer>
+    <integer>14</integer>
+    <integer>15</integer>
+    <integer>19</integer>
+    <integer>20</integer>
+    <integer>21</integer>
     <integer>25</integer>
-    <integer>26</integer>
-    <integer>27</integer>
+    <integer>148</integer>
+    <integer>149</integer>
+    <integer>150</integer>
    </array>
   </dict>
   </dict>
@@ -234,67 +482,927 @@
    <key>path</key>
    <array>
     <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>149</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>149</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>15</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>24</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
      <key>kind</key><string>event</string>
      <key>location</key>
      <dict>
-      <key>line</key><integer>29</integer>
-      <key>col</key><integer>22</integer>
+      <key>line</key><integer>150</integer>
+      <key>col</key><integer>15</integer>
       <key>file</key><integer>0</integer>
      </dict>
      <key>ranges</key>
      <array>
        <array>
         <dict>
-         <key>line</key><integer>29</integer>
-         <key>col</key><integer>22</integer>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>15</integer>
          <key>file</key><integer>0</integer>
         </dict>
         <dict>
-         <key>line</key><integer>29</integer>
-         <key>col</key><integer>27</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-       </array>
-       <array>
-        <dict>
-         <key>line</key><integer>29</integer>
-         <key>col</key><integer>39</integer>
-         <key>file</key><integer>0</integer>
-        </dict>
-        <dict>
-         <key>line</key><integer>29</integer>
-         <key>col</key><integer>51</integer>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>33</integer>
          <key>file</key><integer>0</integer>
         </dict>
        </array>
      </array>
      <key>depth</key><integer>0</integer>
      <key>extended_message</key>
-     <string>Result of &apos;malloc&apos; is converted to a pointer of type &apos;List&apos;, which is incompatible with sizeof operand type &apos;int *&apos;</string>
+     <string>Calling &apos;createTrie&apos;</string>
      <key>message</key>
-     <string>Result of &apos;malloc&apos; is converted to a pointer of type &apos;List&apos;, which is incompatible with sizeof operand type &apos;int *&apos;</string>
+     <string>Calling &apos;createTrie&apos;</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>11</integer>
+      <key>col</key><integer>1</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Entered call from &apos;main&apos;</string>
+     <key>message</key>
+     <string>Entered call from &apos;main&apos;</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>11</integer>
+           <key>col</key><integer>1</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>11</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>14</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>19</integer>
+      <key>col</key><integer>15</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>19</integer>
+         <key>col</key><integer>15</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>19</integer>
+         <key>col</key><integer>42</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Memory is allocated</string>
+     <key>message</key>
+     <string>Memory is allocated</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>19</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>20</integer>
+      <key>col</key><integer>7</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>20</integer>
+         <key>col</key><integer>7</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>20</integer>
+         <key>col</key><integer>18</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Assuming &apos;trie&apos; is not equal to NULL</string>
+     <key>message</key>
+     <string>Assuming &apos;trie&apos; is not equal to NULL</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>20</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>25</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>25</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>25</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>25</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>30</integer>
+      <key>col</key><integer>7</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>30</integer>
+         <key>col</key><integer>7</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>30</integer>
+         <key>col</key><integer>26</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Assuming field &apos;finite&apos; is not equal to NULL</string>
+     <key>message</key>
+     <string>Assuming field &apos;finite&apos; is not equal to NULL</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>30</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>37</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>37</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>37</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>37</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>38</integer>
+      <key>col</key><integer>7</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>38</integer>
+         <key>col</key><integer>7</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>38</integer>
+         <key>col</key><integer>30</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>1</integer>
+     <key>extended_message</key>
+     <string>Assuming field &apos;transition&apos; is not equal to NULL</string>
+     <key>message</key>
+     <string>Assuming field &apos;transition&apos; is not equal to NULL</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>38</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>44</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>44</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>150</integer>
+      <key>col</key><integer>15</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>15</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>150</integer>
+         <key>col</key><integer>33</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Returned allocated memory</string>
+     <key>message</key>
+     <string>Returned allocated memory</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>15</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>24</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>150</integer>
+           <key>col</key><integer>6</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>4</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>pop-up</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>151</integer>
+      <key>col</key><integer>7</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>ranges</key>
+     <array>
+       <array>
+        <dict>
+         <key>line</key><integer>151</integer>
+         <key>col</key><integer>7</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+        <dict>
+         <key>line</key><integer>151</integer>
+         <key>col</key><integer>10</integer>
+         <key>file</key><integer>0</integer>
+        </dict>
+       </array>
+     </array>
+     <key>extended_message</key>
+     <string>&apos;trie&apos; is not equal to NULL</string>
+     <key>message</key>
+     <string>&apos;trie&apos; is not equal to NULL</string>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>7</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>151</integer>
+           <key>col</key><integer>10</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>155</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>155</integer>
+           <key>col</key><integer>14</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>control</string>
+     <key>edges</key>
+      <array>
+       <dict>
+        <key>start</key>
+         <array>
+          <dict>
+           <key>line</key><integer>155</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>155</integer>
+           <key>col</key><integer>14</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+        <key>end</key>
+         <array>
+          <dict>
+           <key>line</key><integer>164</integer>
+           <key>col</key><integer>3</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+          <dict>
+           <key>line</key><integer>164</integer>
+           <key>col</key><integer>8</integer>
+           <key>file</key><integer>0</integer>
+          </dict>
+         </array>
+       </dict>
+      </array>
+    </dict>
+    <dict>
+     <key>kind</key><string>event</string>
+     <key>location</key>
+     <dict>
+      <key>line</key><integer>164</integer>
+      <key>col</key><integer>3</integer>
+      <key>file</key><integer>0</integer>
+     </dict>
+     <key>depth</key><integer>0</integer>
+     <key>extended_message</key>
+     <string>Potential leak of memory pointed to by &apos;trie&apos;</string>
+     <key>message</key>
+     <string>Potential leak of memory pointed to by &apos;trie&apos;</string>
     </dict>
    </array>
-   <key>description</key><string>Result of &apos;malloc&apos; is converted to a pointer of type &apos;List&apos;, which is incompatible with sizeof operand type &apos;int *&apos;</string>
-   <key>category</key><string>Unix API</string>
-   <key>type</key><string>Allocator sizeof operand mismatch</string>
-   <key>check_name</key><string>unix.MallocSizeof</string>
+   <key>description</key><string>Potential leak of memory pointed to by &apos;trie&apos;</string>
+   <key>category</key><string>Memory error</string>
+   <key>type</key><string>Memory leak</string>
+   <key>check_name</key><string>unix.Malloc</string>
    <!-- This hash is experimental and going to change! -->
-   <key>issue_hash_content_of_line_in_context</key><string>004d3ea206539144b6792bcb1b3f59c6</string>
+   <key>issue_hash_content_of_line_in_context</key><string>5db4beb395cdcec7e26cc35e06dd37f2</string>
   <key>issue_context_kind</key><string>function</string>
-  <key>issue_context</key><string>createTrie</string>
-  <key>issue_hash_function_offset</key><string>5</string>
+  <key>issue_context</key><string>main</string>
+  <key>issue_hash_function_offset</key><string>2</string>
   <key>location</key>
   <dict>
-   <key>line</key><integer>29</integer>
-   <key>col</key><integer>22</integer>
+   <key>line</key><integer>164</integer>
+   <key>col</key><integer>3</integer>
    <key>file</key><integer>0</integer>
   </dict>
   <key>ExecutedLines</key>
   <dict>
    <key>0</key>
    <array>
+    <integer>11</integer>
+    <integer>14</integer>
+    <integer>15</integer>
+    <integer>19</integer>
+    <integer>20</integer>
+    <integer>25</integer>
+    <integer>26</integer>
     <integer>29</integer>
+    <integer>30</integer>
+    <integer>37</integer>
+    <integer>38</integer>
+    <integer>44</integer>
+    <integer>47</integer>
+    <integer>51</integer>
+    <integer>52</integer>
+    <integer>53</integer>
+    <integer>56</integer>
+    <integer>57</integer>
+    <integer>58</integer>
+    <integer>59</integer>
+    <integer>65</integer>
+    <integer>68</integer>
+    <integer>69</integer>
+    <integer>70</integer>
+    <integer>74</integer>
+    <integer>80</integer>
+    <integer>81</integer>
+    <integer>82</integer>
+    <integer>83</integer>
+    <integer>106</integer>
+    <integer>107</integer>
+    <integer>111</integer>
+    <integer>112</integer>
+    <integer>113</integer>
+    <integer>114</integer>
+    <integer>115</integer>
+    <integer>116</integer>
+    <integer>117</integer>
+    <integer>127</integer>
+    <integer>128</integer>
+    <integer>132</integer>
+    <integer>133</integer>
+    <integer>134</integer>
+    <integer>135</integer>
+    <integer>136</integer>
+    <integer>137</integer>
+    <integer>138</integer>
+    <integer>148</integer>
+    <integer>149</integer>
+    <integer>150</integer>
+    <integer>151</integer>
+    <integer>155</integer>
+    <integer>156</integer>
+    <integer>157</integer>
+    <integer>159</integer>
+    <integer>160</integer>
+    <integer>161</integer>
+    <integer>162</integer>
+    <integer>163</integer>
+    <integer>164</integer>
    </array>
   </dict>
   </dict>

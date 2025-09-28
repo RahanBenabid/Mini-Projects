@@ -40,10 +40,12 @@ Trie createTrie(int maxNode) {
 
 void insertInTrie(Trie trie, unsigned char *w) {
   int currentNode = 0;
-  size_t n = strlen((char*) w);
+  size_t n = strlen((char *)w);
   for (int i = 0; i < n; i++) {
     unsigned char currentCharacter = w[i];
-    if (trie->transition[currentNode][currentCharacter] == -1) {
+    int next = trie->transition[currentNode][currentCharacter];
+
+    if (next == -1) {
       // during an insertion, we check if we're passing the limit
       if (trie->nextNode >= trie->maxNode) {
         perror("Trie is full, cannot insert more nodes");
@@ -54,13 +56,14 @@ void insertInTrie(Trie trie, unsigned char *w) {
     }
     currentNode = trie->transition[currentNode][currentCharacter];
   }
-  // should be only true for terminal nodes, but i'm keeping it as is for now
+  // should be only true for terminal nodes not prefixes, but i'm keeping it as
+  // is for now
   trie->finite[currentNode] = 1;
 }
 
 int isInTrie(Trie trie, unsigned char *w) {
   int currentNode = 0;
-  size_t n = strlen((char*) w);
+  size_t n = strlen((char *)w);
   for (int i = 0; i < n; i++) {
     unsigned char currentCharacter = w[i];
     if (trie->transition[currentNode][currentCharacter] != -1) {
