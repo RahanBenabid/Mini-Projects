@@ -37,6 +37,7 @@ Trie createTrie(int maxNode) {
   trie->transition = (List *)calloc((size_t)MAX_BUCKETS, sizeof(List));
   if (trie->transition == NULL) {
     fprintf(stderr, "createTrie: failed to alocate transition buckets");
+    free(trie->finite);
     free(trie);
     return NULL;
   }

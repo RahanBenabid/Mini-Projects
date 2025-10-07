@@ -90,3 +90,5 @@ test/
 C/Text-Editor/content.txt
 **/.nova
 C/Text-Editor/.clangd
+*.pch
+*.tmp
