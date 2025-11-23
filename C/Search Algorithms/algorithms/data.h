@@ -1,7 +1,4 @@
-/* Old-style header guard with ifdefs.
- * You can also use "#pragma once".
- */
-
+// those are READ-ONLY
 #ifndef DATA_H_
 #define DATA_H_
 

@@ -7,48 +7,58 @@
 int matchNum = 0;
 
 int *search(char *text, char *pattern) {
+  int textLength = (int)strlen(text);
+  int patternLength = (int)strlen(pattern);
+
   int *match = (int *)calloc(1, sizeof(int));
-  int textLength = (int) strlen(text);
-  int patternLength = (int) strlen(pattern);
-  
   if (match == NULL) {
-    printf("Memory not allocated for out\n");
+    printf("Memory not allocated for the match table\n");
     exit(0);
   }
 
-  for (int i = 0; i <= textLength - patternLength; i++) {
-    int j;
-    for (j = 0; j < patternLength; j++) {
-      if (pattern[j] != text[i+j]) {
-        break;
-      }
+  // append the pattern to the end of the text
+  char * mutableText = malloc((textLength + patternLength + 1) * sizeof(char));
+  if (mutableText == NULL) {
+    printf("Could not allocate memory for mutableText\n");
+    exit(0);
+  }
+
+  strcpy(mutableText, text);
+  for (int i = 0; i < patternLength; i++) {
+    mutableText[textLength + i] = pattern[i];
+  }
+  
+  for (int j = 0; j < textLength; j++) {
+    int k = 0;
+    while (mutableText[j + k] == pattern[k]) {
+      k++;
     }
-    
-    if (j == patternLength) {
+    if (k == (int) strlen(pattern)) {
       int *temp = match;
       match = (int *)realloc(match, (matchNum + 1) * sizeof(int));
       if (!match) {
         printf("Allocation failed\n");
         match = temp;
       } else {
-        match[matchNum] = i;
+        match[matchNum] = j;
         matchNum++;
       }
     }
   }
+  free(mutableText);
+  
   return match;
 }
 
 int main(void) {
   int *match = search(text, pattern);
-  
+
   for (int k = 0; k < matchNum; k++) {
     printf("\n\n %d\n", match[k]);
     for (int s = match[k]; s < match[k] + (int)strlen(pattern); s++) {
       printf("%c", text[s]);
     }
   }
-
 
   free(match);
   return 0;
